@@ -8,7 +8,7 @@ python:
 install:
   - pip install -r requirements.txt
 script: 
-  - coverage run test.hello
+  - coverage run test.hello.py
 
 after_success:
   - codecov 
