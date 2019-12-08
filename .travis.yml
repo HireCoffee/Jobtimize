@@ -6,4 +6,4 @@ python:
   - "3.6"
   - "3.7"
 script: 
-  - python hello.py
+  - python tests/hello.py
