@@ -9,14 +9,14 @@ __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
 
-#################################################################
+""
 from urllib.request import urlopen, HTTPError
 from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 from unicodedata import normalize
 from json import loads
 import re
-#################################################################
+""
 def scrapBody(url):
     """
     Take the body part of an html document from the URL
@@ -27,7 +27,7 @@ def scrapBody(url):
         body = BeautifulSoup(response.read(), 'html.parser').body
     return body
 
-#################################################################
+""
 def idFromLink(link):
     """
     Extract the job ID from the monster url
@@ -42,7 +42,7 @@ def idFromLink(link):
         jobID = link[link.rfind('/')+1:]
     return jobID
 
-#################################################################
+""
 def scrapMonsterID(searchList, countryList):
     """
     Extract jobIDs from the search results provided by Monster
@@ -91,7 +91,7 @@ def scrapMonsterID(searchList, countryList):
                 setID = setID.union(listID)
     return setID
 
-#################################################################
+""
 def dicoFromJson(jobID):
     """
     Normalize the data of the request response
@@ -141,7 +141,7 @@ def dicoFromJson(jobID):
     dico["url"] = "https://job-openings.monster.co.uk/monster/{}".format(jobID)
     return dico
 
-#################################################################
+""
 def MonsterScrap(searchList, countryList):
     """
     Extract and normalizes data from the search results
