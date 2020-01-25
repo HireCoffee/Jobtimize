@@ -73,8 +73,9 @@ def scrapIndeedID(searchList, countryList):
     setID = set()
     for search in searchList:
         search = search.replace(" ", "+")
-        for country in countryList:
-            country = country.lower()
+        for country_general in countryList:
+            country = country_general.lower()
+            if country == "us": country = "www" #"us" note redirected
             listID = set()
             limit = 50
             start = repage = count = 0
@@ -92,7 +93,8 @@ def scrapIndeedID(searchList, countryList):
                     if (match is None or repage < count):
                         break
                     else:
-                        listID = listID.union({(country, jobID)
+                    
+                        listID = listID.union({(country_general, jobID)
                                                for jobID in list(scrapID(page))
                                                })
                         start += limit
