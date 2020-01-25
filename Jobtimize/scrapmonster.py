@@ -8,6 +8,7 @@ __version__ = '1.0.0'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
+__all__ = ['MonsterScrap']
 
 ""
 from urllib.request import urlopen, HTTPError
@@ -104,7 +105,7 @@ def dicoFromJson(jobID):
         query = urlopen(url).read()
     except HTTPError:
         return {}
-    dico = json.loads(
+    dico = loads(
         normalize('NFKD', query.decode('utf-8')).encode('ascii', 'ignore'))
 
     general = (("description", "jobDescription"),

@@ -8,6 +8,7 @@ __version__ = '1.0.0'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
+__all__ = ['IndeedScrap']
 
 ""
 from urllib.request import urlopen, HTTPError
