@@ -145,11 +145,12 @@ def dicoFromScrap(tupleID):
         try:
             name = page.find("div", {"class": "icl-u-lg-mr--sm"}).text
         except AttributeError:
-            name = page.find("span", {
-                "class": "icl-u-textColor--success"
-            }).text
-        except:
-            name = ""
+            try:
+                name = page.find("span", {
+                    "class": "icl-u-textColor--success"
+                }).text
+            except:
+                name = ""
         return name
 
     dico["country"] = tupleID[0].upper()
