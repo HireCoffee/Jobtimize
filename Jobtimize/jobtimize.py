@@ -11,8 +11,8 @@ __status__ = 'planning'
 __all__ = ['jobscrap']
 
 ""
-from scrapindeed import IndeedScrap
-from scrapmonster import MonsterScrap
+from .scrapindeed import IndeedScrap
+from .scrapmonster import MonsterScrap
 import pandas as pd
 ""
 def jobscrap(searchList, countryList):

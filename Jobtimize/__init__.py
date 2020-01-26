@@ -1,1 +1,1 @@
-from jobtimize import jobscrap
+from .jobtimize import jobscrap
