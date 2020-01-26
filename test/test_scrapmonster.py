@@ -14,8 +14,12 @@ class TestMonster:
     countryList = ["FR"]
     
     monsterID = scrapMonsterID(searchList, countryList)
-    dicojson = dicoFromJson(list(monsterID)[0])
     scraped = MonsterScrap(searchList, countryList)
+
+    try:
+        dicojson = dicoFromJson(list(monsterID)[0])
+    except IndexError:
+        dicojson = {}
     
     def test_scrapID(self):
         assert isinstance(self.monsterID, (set, list))
