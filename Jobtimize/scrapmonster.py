@@ -153,7 +153,7 @@ def MonsterScrap(searchList, countryList):
     scraped = list()
     setID = scrapMonsterID(searchList, countryList)
     if len(setID) == 0:
-        return [{}]
+        workers = 1
     elif len(setID) < 20:
         workers = len(setID)
     else:
