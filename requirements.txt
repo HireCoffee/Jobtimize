@@ -1,2 +1,5 @@
-coverage
-codecov
+beautifulsoup4>=4.8.2
+jsonschema>=3.2.0
+lxml>=4.4.2
+numpy>=1.18.1
+pandas>=0.25.3
