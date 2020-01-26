@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+"""
+Jobtimize main functions.
+Use:
+>>> from Jobtimize import jobscrap
+"""
+
 __author__ = 'Lrakotoson'
 __copyright__ = 'Copyright 2020, Jobtimize'
 __license__ = 'MIT'
