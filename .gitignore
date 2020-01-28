@@ -340,3 +340,4 @@ dist/
 build/
 Jobtimize.egg-info/
 token.txt
+token
