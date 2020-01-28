@@ -1,5 +1,2 @@
-beautifulsoup4
-jsonschema
-lxml
-numpy
+bs4
 pandas
