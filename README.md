@@ -6,8 +6,8 @@ The package is mainly based on scraping and text classification to fill in missi
 |Release|Usage|Development|
 |---	|---  |---	      |
 |[![PyPI](https://img.shields.io/pypi/v/Jobtimize?logo=PyPI&style=for-the-badge&labelColor=%233775A9&logoColor=white)](https://pypi.org/project/Jobtimize/)|[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)|[![Build Status](https://img.shields.io/travis/com/Lrakotoson/Jobtimize/master.svg?style=for-the-badge&logo=Travis-CI&logoColor=white)](https://travis-ci.com/Lrakotoson/Jobtimize)|
-|[![Conda](https://img.shields.io/conda/v/lrakotoson/jobtimize?label=ANACONDA&logo=anaconda&style=for-the-badge)](https://anaconda.org/lrakotoson/jobtimize)|[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Jobtimize?logo=python&logoColor=yellow&style=for-the-badge)](https://pypi.org/project/Jobtimize/)|[![Codecov](https://img.shields.io/codecov/c/gh/Lrakotoson/Jobtimize?logo=Codecov&style=for-the-badge)](https://codecov.io/gh/Lrakotoson/Jobtimize/)|
-|   	|   	|[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&labelColor=yellow)](https://www.python.org/)|
+|[![Conda](https://img.shields.io/conda/v/lrakotoson/jobtimize?label=CONDA&logo=anaconda&style=for-the-badge)](https://anaconda.org/lrakotoson/jobtimize)|[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Jobtimize?logo=python&logoColor=yellow&style=for-the-badge)](https://pypi.org/project/Jobtimize/)|[![Codecov](https://img.shields.io/codecov/c/gh/Lrakotoson/Jobtimize?logo=Codecov&style=for-the-badge)](https://codecov.io/gh/Lrakotoson/Jobtimize/)|
+|![PyPI - Status](https://img.shields.io/pypi/status/Jobtimize?style=for-the-badge)|   	|[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&labelColor=yellow)](https://www.python.org/)|
 
 # Dependencies
 
@@ -15,7 +15,6 @@ The package is mainly based on scraping and text classification to fill in missi
 beautifulsoup4
 jsonschema
 lxml
-numpy
 pandas
 ```
 
