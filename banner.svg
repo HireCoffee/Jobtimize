@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 345.181px;
+        text-anchor: middle;
+        font-family: Oswald;
+        font-weight: 600;
+      }
+
+      .cls-1, .cls-3, .cls-5 {
+        fill: #5b4ddd;
+      }
+
+      .cls-2 {
+        filter: url(#filter);
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-4 {
+        fill: #efe217;
+      }
+
+      .cls-5 {
+        opacity: 0.99;
+      }
+    </style>
+    <filter id="filter" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-12.504" dy="12.948" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="4.359"/>
+      <feFlood result="flood" flood-opacity="0.19"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Plan_de_travail_1" data-name="Plan de travail 1">
+    <text id="JOBTIMIZE" class="cls-1" transform="translate(793.766 502.653) scale(0.579)">JOBTIMIZE</text>
+    <g id="Groupe_1" data-name="Groupe 1" class="cls-2">
+      <path class="cls-3" d="M319.61,354l49.172,49.173L319.61,452.348l-49.172-49.172Z"/>
+      <path class="cls-4" d="M245.323,269.547l68.7,10.8-10.8,68.7-68.7-10.8Z"/>
+      <path class="cls-3" d="M270.365,466.044h69.55v69.55h-69.55v-69.55Z"/>
+      <path class="cls-3" d="M187.214,466.044H256.74v69.55H187.214v-69.55Z"/>
+      <path class="cls-3" d="M187.214,382.869H256.74V452.4H187.214V382.869Z"/>
+      <path class="cls-5" d="M104.039,466.044h69.55v69.55h-69.55v-69.55Z"/>
+      <path class="cls-3" d="M104.039,382.869h69.55V452.4h-69.55V382.869Z"/>
+      <path class="cls-3" d="M104.039,299.694h69.55v69.55h-69.55v-69.55Z"/>
+    </g>
+  </g>
+</svg>
