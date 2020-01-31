@@ -55,8 +55,8 @@ The `df` object is a dataframe pandas, so it inherits all its methods.
 🎊 Firstly, thank you for giving your time to contribute to `Jobtimize`. 🎊
 
 If you have a new feature to submit, don't hesitate to **open an issue** _(By checking "new feature" to make it easier to read)_ We can discuss it freely there.  
-Then you can make a "pull request" as explained in the [contribution guidelines]().
+Then you can make a "pull request" as explained in the [contribution guidelines](https://github.com/Lrakotoson/Jobtimize/blob/master/docs/CONTRIBUTING.md).
 
-Same for all contributions, code improvement, documentation writing, translations... **all ideas are welcome!** Check out the [guidelines]() to make it easier.
+Same for all contributions, code improvement, documentation writing, translations... **all ideas are welcome!** Check out the [guidelines](https://github.com/Lrakotoson/Jobtimize/blob/master/docs/CONTRIBUTING.md) to make it easier.
 
 `Jobtimize` gets better with contributions.
