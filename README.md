@@ -38,7 +38,7 @@ pip install git+https://github.com/Lrakotoson/Jobtimize.git
 ```
 
 # How to use ?
-Since `Jobtimize` is a package, in python you just have to import it.
+As `Jobtimize` is a package, in python you just have to import it.
 The main function (*for now*) is `Jobtimize.jobscrap`.
 ```python
 from Jobtimize import jobscrap
