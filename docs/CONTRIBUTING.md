@@ -61,3 +61,15 @@ $ git add implemented-files
 $ git commit
 $ git push origin my-feature
 ```
+
+## Setup the feature
+The architecture of Jobtimize is quite special.  
+For a python module `Jobtimize/module.py`, there is a **jupyter notebook** `docs/module.ipynb`.
+The aim is to have a clearer explanation of the codes so that everyone can understand them more easily.
+
+The ideal would be to have an explanation, or even a narration of what the developer thought, for each function/method and a main example.
+
+Starting by working on the notebook and then putting all the code into a script would be a good way to do it.
+
+Of course, this is not a constraint, everyone is free to write as he wants but in the spirit of everyone's understanding.
+
