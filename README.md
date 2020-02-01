@@ -51,7 +51,7 @@ df.head()
 ```
 The `df` object is a dataframe pandas, so it inherits all its methods.
 
-# [Contributing 🤝](https://github.com/Lrakotoson/Jobtimize/blob/master/docs/CONTRIBUTING.md)
+# Contributing 🤝
 🎊 Firstly, thank you for giving your time to contribute to `Jobtimize`. 🎊
 
 If you have a new feature to submit, don't hesitate to **open an issue** _(By checking "new feature" to make it easier to read)_ We can discuss it freely there.  

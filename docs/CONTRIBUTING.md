@@ -38,3 +38,26 @@ Then, just follow the template to make a simple description of the feature.
 We will answer very quickly.
 
 # Pull Request
+## Create your branch
+1. The best way to work is to fork the [repository](https://github.com/Lrakotoson/Jobtimize), ideally on a fork of the master branch if it is an independent feature or a specific branch for a development associated with it.  
+
+2. Clone your fork from the repository to your local storage. Keep it synchronized with the original repository in case of major changes using an upstream: [Learn more](https://help.github.com/en/github/getting-started-with-github/fork-a-repo).
+```bash
+$ git clone git@github.com:USERNAME/Jobtimize.git
+$ cd Jobtimize
+```
+
+3. Create a specific branch for your `feature` where you will implement it. Creating a branch allows you to perform tests without the risk of affecting the main program.
+```bash
+$ git pull
+$ git checkout -b my-feature
+```
+4. Implement your code in a clear way *(explained in the following)*, commit everything and push your branch to your fork.  
+Finally, make a pull request to the original Jobtimize repository [this way](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork)  
+Please leave checked the option
+- [x] Allow edits from maintainers
+```bash
+$ git add implemented-files
+$ git commit
+$ git push origin my-feature
+```
