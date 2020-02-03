@@ -4,7 +4,7 @@
 __author__ = 'Lrakotoson'
 __copyright__ = 'Copyright 2020, Jobtimize'
 __license__ = 'MIT'
-__version__ = '0.1.0'
+__version__ = '0.1.5'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
