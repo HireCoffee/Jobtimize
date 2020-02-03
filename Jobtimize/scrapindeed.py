@@ -15,6 +15,7 @@ from .rotateproxies import RotateProxies
 from requests import get, Timeout
 from requests.exceptions import HTTPError, ProxyError
 from concurrent.futures import ThreadPoolExecutor
+from itertools import islice
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import re
