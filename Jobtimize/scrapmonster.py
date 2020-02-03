@@ -72,6 +72,12 @@ def scrapMonsterID(searchList, countryList, prox = False):
                 if page % 50 == 0 and prox: proxy = proxies.next()
                 try:
                     body = scrapBody(url, proxy)
+                except (Timeout, ProxyError):
+                    if prox:
+                        proxy = proxies.next()
+                        continue
+                    else:
+                        break
                 except HTTPError:
                     break
                 else:
@@ -99,6 +105,7 @@ def scrapMonsterID(searchList, countryList, prox = False):
                         page += 1
                 setID = setID.union(listID)
     return setID
+
 ""
 def dicoFromJson(args):
     """
