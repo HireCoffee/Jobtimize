@@ -115,7 +115,7 @@ def dicoFromJson(args):
         query = get(url, proxy).text
     except HTTPError:
         return {}
-    dico = json.loads(
+    dico = loads(
         normalize('NFKD', query).encode('ascii', 'ignore'))
 
     general = (("description", "jobDescription"),
