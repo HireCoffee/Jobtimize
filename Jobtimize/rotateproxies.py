@@ -22,7 +22,6 @@ class RotateProxies:
     def __init__(self):
         self.proxies = self.collectProxies()
     
-    @staticmethod
     def collectProxies(self):
         """
         Collects proxies (IP:Port)
