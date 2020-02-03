@@ -184,7 +184,7 @@ def IndeedScrap(searchList, countryList, prox=False):
     if len(setID) < 20:
         workers = len(setID)
     else:
-        workers = len(setID) / 5
+        workers = len(setID) // 5
 
     if prox:
         proxies = list(islice(RotateProxies().proxies, workers)) * len(setID)
