@@ -29,7 +29,7 @@ class TestIndeed:
     
     def test_scraped_prox(self):
         try:
-            scraped_Prox = IndeedScrap(searchList, countryList, prox = True)
+            scraped_Prox = IndeedScrap(["Data Analyst nantes"], ["FR"], prox = True)
         except:
             assert False
         else:
