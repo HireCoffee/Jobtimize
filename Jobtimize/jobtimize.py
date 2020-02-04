@@ -10,7 +10,7 @@ Use:
 __author__ = 'Lrakotoson'
 __copyright__ = 'Copyright 2020, Jobtimize'
 __license__ = 'MIT'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
@@ -20,6 +20,7 @@ __all__ = ['jobscrap']
 from .scrapindeed import IndeedScrap
 from .scrapmonster import MonsterScrap
 import pandas as pd
+import warnings
 ""
 def jobscrap(searchList, countryList, prox = False):
     """
@@ -29,7 +30,9 @@ def jobscrap(searchList, countryList, prox = False):
     :prox: if True use proxy, default False
     :return: pandas dataframe
     """
-    
+    if prox:
+        warnings.warn("Using a proxy extends execution time", UserWarning)
+        
     countries = [
         'AE', 'AR', 'AT', 'AU', 'BE', 'BH', 'BR', 'CA', 'CH', 'CL', 'CN', 'CO',
         'CZ', 'DE', 'DK', 'ES', 'FI', 'FR', 'GB', 'GR', 'HK', 'HU', 'ID', 'IE',
