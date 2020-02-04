@@ -24,6 +24,11 @@ The package is mainly based on scraping and text classification to fill in missi
 |[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Lrakotoson/Jobtimize?include_prereleases&logo=github&style=for-the-badge)](https://github.com/Lrakotoson/Jobtimize)|   	|[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&labelColor=yellow)](https://www.python.org/)|
 
 
+<hr>
+### What's new in the current version:
+- [**v.0.0.4A** Changelog](https://github.com/Lrakotoson/Jobtimize/blob/master/CHANGELOG.md)
+<hr>
+
 
 # Dependencies
 The data collected is mainly, if not entirely, obtained through the scraping of websites.  
@@ -34,8 +39,8 @@ Depending on the installation method, the following packages are required and wi
 beautifulsoup4
 jsonschema
 lxml
-numpy
 pandas
+requests
 ```
 
 
@@ -66,7 +71,8 @@ The main function (*for now*) is `Jobtimize.jobscrap`.
 from Jobtimize import jobscrap
 
 df = jobscrap(["Data Scientist", "Data Analyst"],
-              ["UK", "FR"]
+              ["UK", "FR"],
+              prox = False
     )
 
 df.head()
