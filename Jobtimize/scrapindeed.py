@@ -4,27 +4,31 @@
 __author__ = 'Lrakotoson'
 __copyright__ = 'Copyright 2020, Jobtimize'
 __license__ = 'MIT'
-__version__ = '0.0.2'
+__version__ = '0.1.5'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
 __all__ = ['IndeedScrap']
 
 ""
-from urllib.request import urlopen, HTTPError
+from .rotateproxies import RotateProxies
+from requests import get, Timeout
+from requests.exceptions import HTTPError, ProxyError
 from concurrent.futures import ThreadPoolExecutor
+from itertools import islice
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import re
 ""
-def scrapPage(url):
+def scrapPage(url, proxy=None):
     """
     Scrap an html document from the URL
     :url: page url
+    :proxy: dict of proxy
     :return: html page, BeautifulSoup object
     """
-    with urlopen(url) as response:
-        page = BeautifulSoup(response.read(), 'html.parser')
+    with get(url, proxies=proxy) as response:
+        page = BeautifulSoup(response.text, 'html.parser')
     return page
 
 ""
@@ -63,19 +67,22 @@ def stripmatch(page):
     return repage, match
 
 ""
-def scrapIndeedID(searchList, countryList):
+def scrapIndeedID(searchList, countryList, prox=False):
     """
     Extract jobIDs from the search results provided by Indeed
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :prox: bool, default False
     :return: set of tuples, country and ID
     """
     setID = set()
     for search in searchList:
         search = search.replace(" ", "+")
+        if prox: proxies = RotateProxies()
+        proxy = None
         for country_general in countryList:
             country = country_general.lower()
-            if country == "us": country = "www" #"us" note redirected
+            if country == "us": country = "www"  #"us" note redirected
             listID = set()
             limit = 50
             start = repage = count = 0
@@ -83,8 +90,15 @@ def scrapIndeedID(searchList, countryList):
             while (repage <= 101 or len(listID) < match):
                 url = "https://{}.indeed.com/jobs?q={}&limit={}&start={}".format(
                     country, search, limit, start)
+                if count % 50 == 0 and prox: proxy = proxies.next()
                 try:
-                    page = scrapPage(url)
+                    page = scrapPage(url, proxy)
+                except (Timeout, ProxyError):
+                    if prox:
+                        proxy = proxies.next()
+                        continue
+                    else:
+                        break
                 except HTTPError:
                     break
                 else:
@@ -93,7 +107,7 @@ def scrapIndeedID(searchList, countryList):
                     if (match is None or repage < count):
                         break
                     else:
-                    
+
                         listID = listID.union({(country_general, jobID)
                                                for jobID in list(scrapID(page))
                                                })
@@ -102,25 +116,23 @@ def scrapIndeedID(searchList, countryList):
     return setID
 
 ""
-def dicoFromScrap(tupleID):
+def dicoFromScrap(args):
     """
     Normalize the data of the request response
+    :args: tuple of tupleID and proxy
     :tupleID: tuple of country code and Indeed job ID
+    :proxy: dict of proxy
     :return: standard dictionary of useful elements
     """
+    tupleID, proxy = args
     dico = {}
     url = "https://www.indeed.com/viewjob?jk={}".format(tupleID[1])
     try:
-        page = scrapPage(url)
+        page = scrapPage(url, proxy)
     except HTTPError:
         return dico
 
     def postedDate(page):
-        """
-        Extract the posting date in isoformat
-        :page: html page
-        :return: str, isoformat date
-        """
         try:
             date = int(
                 re.findall(
@@ -137,20 +149,14 @@ def dicoFromScrap(tupleID):
         return posted
 
     def companyName(page):
-        """
-        Extract the company name
-        :page: html page
-        :return: str
-        """
         try:
             name = page.find("div", {"class": "icl-u-lg-mr--sm"}).text
         except AttributeError:
-            try:
-                name = page.find("span", {
-                    "class": "icl-u-textColor--success"
-                }).text
-            except:
-                name = ""
+            name = page.find("span", {
+                "class": "icl-u-textColor--success"
+            }).text
+        except:
+            name = ""
         return name
 
     dico["country"] = tupleID[0].upper()
@@ -164,20 +170,31 @@ def dicoFromScrap(tupleID):
     return dico
 
 ""
-def IndeedScrap(searchList, countryList):
+def IndeedScrap(searchList, countryList, prox=False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :prox: bool, default False
     :return: list of standard dictionaries
     """
     scraped = list()
-    setID = scrapIndeedID(searchList, countryList)
+    setID = scrapIndeedID(searchList, countryList, prox)
+
     if len(setID) < 20:
         workers = len(setID)
     else:
-        workers = len(setID) / 5
+        workers = len(setID) // 5
+
+    if prox:
+        proxies = list(islice(RotateProxies().proxies, workers)) * len(setID)
+    else:
+        proxies = [None] * len(setID)
+
     with ThreadPoolExecutor(workers) as executor:
-        for result in executor.map(dicoFromScrap, setID):
-            scraped.append(result)
+        try:
+            for result in executor.map(dicoFromScrap, zip(setID, proxies)):
+                scraped.append(result)
+        except:
+            pass
     return scraped
