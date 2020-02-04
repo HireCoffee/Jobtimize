@@ -13,8 +13,9 @@ class TestIndeed:
     searchList = ["Data Analyst nantes"]
     countryList = ["FR"]
     
+    
     indeedID = scrapIndeedID(searchList, countryList)
-    dicoscrap = dicoFromScrap(list(indeedID)[0])
+    dicoscrap = dicoFromScrap((list(indeedID)[0], None))
     scraped = IndeedScrap(searchList, countryList)
     
     def test_scrapID(self):

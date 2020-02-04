@@ -9,6 +9,11 @@ The package is mainly based on scraping and text classification to fill in missi
 |[![Conda](https://img.shields.io/conda/v/lrakotoson/jobtimize?label=CONDA&logo=anaconda&style=for-the-badge)](https://anaconda.org/lrakotoson/jobtimize)|[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Jobtimize?logo=python&logoColor=yellow&style=for-the-badge)](https://pypi.org/project/Jobtimize/)|[![Codecov](https://img.shields.io/codecov/c/gh/Lrakotoson/Jobtimize?logo=Codecov&style=for-the-badge)](https://codecov.io/gh/Lrakotoson/Jobtimize/)|
 |![PyPI - Status](https://img.shields.io/pypi/status/Jobtimize?style=for-the-badge)|   	|[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&labelColor=yellow)](https://www.python.org/)|
 
+---
+### What's new in the current version:
+- [**v.0.0.4A** Changelog](CHANGELOG.md)
+
+---
 # Dependencies
 
 ```
