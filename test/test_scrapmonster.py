@@ -15,7 +15,7 @@ class TestMonster:
     
     monsterID = scrapMonsterID(searchList, countryList)
     scraped = MonsterScrap(searchList, countryList)
-    dicojson = dicoFromJson(list(monsterID)[0])
+    dicojson = dicoFromJson((list(monsterID)[0], None))
     
     def test_scrapID(self):
         assert isinstance(self.monsterID, (set, list))
@@ -25,3 +25,11 @@ class TestMonster:
     
     def test_scraped_len(self):
         assert len(self.monsterID) == len(self.scraped)
+    
+    def test_scraped_prox(self):
+        try:
+            scraped_Prox = MonsterScrap(["Data Analyst nantes"], ["FR"], prox = True)
+        except:
+            assert False
+        else:
+            assert True
