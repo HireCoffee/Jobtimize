@@ -10,7 +10,7 @@ Use:
 __author__ = 'Lrakotoson'
 __copyright__ = 'Copyright 2020, Jobtimize'
 __license__ = 'MIT'
-__version__ = '0.0.1'
+__version__ = '0.1.0'
 __maintainer__ = 'Loïc Rakotoson'
 __email__ = 'contact@loicrakotoson.com'
 __status__ = 'planning'
@@ -21,11 +21,12 @@ from .scrapindeed import IndeedScrap
 from .scrapmonster import MonsterScrap
 import pandas as pd
 ""
-def jobscrap(searchList, countryList):
+def jobscrap(searchList, countryList, prox = False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :prox: if True use proxy, default False
     :return: pandas dataframe
     """
     
@@ -38,8 +39,8 @@ def jobscrap(searchList, countryList):
     ]
     countryList = [country for country in countryList if country in countries]
 
-    indeed = IndeedScrap(searchList, countryList)
-    monster = MonsterScrap(searchList, countryList)
+    indeed = IndeedScrap(searchList, countryList, prox)
+    monster = MonsterScrap(searchList, countryList, prox)
     # add here other sites in the same format
 
     jobData = pd.DataFrame(indeed + monster,
