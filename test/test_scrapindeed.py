@@ -5,7 +5,7 @@ import sys
 sys.path.append("..")
 
 ""
-from Jobtimize.scrapindeed import IndeedScrap, scrapIndeedID, dicoFromScrap
+from jobtimize.scrapindeed import IndeedScrap, scrapIndeedID, dicoFromScrap
 import pytest
 
 ""

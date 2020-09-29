@@ -5,11 +5,11 @@ import sys
 sys.path.append("..")
 
 ""
-from Jobtimize import jobscrap
+from jobtimize import scraper
 import pytest
 
 ""
-class TestJobtimize:
+class TestScraper:
     searchList = ["Data Analyst nantes"]
     countryList = ["FR", "QS"]
     
