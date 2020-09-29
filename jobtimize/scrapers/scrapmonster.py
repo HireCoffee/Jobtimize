@@ -181,6 +181,7 @@ def MonsterScrap(searchList, countryList, maxpage = 1, prox = False):
     else:
         proxies = [None] * len(setID)
     
+    workers = 1 if workers==0 else workers
     with ThreadPoolExecutor(workers) as executor:
         for result in executor.map(dicoFromJson, zip(setID, proxies)):
             scraped.append(result)

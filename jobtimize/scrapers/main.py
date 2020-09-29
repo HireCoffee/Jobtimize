@@ -21,7 +21,7 @@ from .scrapmonster import MonsterScrap
 import pandas as pd
 import warnings
 ""
-def jobscrap(searchList, countryList, maxpage = 1, prox = False):
+def scraper(searchList, countryList, maxpage = 1, prox = False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search

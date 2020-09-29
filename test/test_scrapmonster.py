@@ -5,7 +5,7 @@ import sys
 sys.path.append("..")
 
 ""
-from jobtimize.scraper.scrapmonster import MonsterScrap, scrapMonsterID, dicoFromJson
+from jobtimize.scrapers.scrapmonster import MonsterScrap, scrapMonsterID, dicoFromJson
 import pytest
 
 ""

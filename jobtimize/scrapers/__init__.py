@@ -7,4 +7,4 @@ On job posting platforms.
 __version__ = "0.0.5a1"
 
 
-from .scraper import jobscrap
+from .main import scraper

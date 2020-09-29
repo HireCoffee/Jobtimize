@@ -199,6 +199,7 @@ def IndeedScrap(searchList, countryList, maxpage = 1, prox=False):
     else:
         proxies = [None] * len(setID)
 
+    workers = 1 if workers==0 else workers
     with ThreadPoolExecutor(workers) as executor:
         try:
             for result in executor.map(dicoFromScrap, zip(setID, proxies)):
