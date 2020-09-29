@@ -10,7 +10,7 @@ import pytest
 
 ""
 class TestIndeed:
-    searchList = ["Data Analyst nantes"]
+    searchList = ["Data Analyst"]
     countryList = ["FR"]
     
     

@@ -10,7 +10,7 @@ import pytest
 
 ""
 class TestMonster:
-    searchList = ["Data Analyst nantes"]
+    searchList = ["Data Analyst"]
     countryList = ["FR"]
     
     monsterID = scrapMonsterID(searchList, countryList)
