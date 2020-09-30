@@ -5,12 +5,12 @@ import sys
 sys.path.append("..")
 
 ""
-from Jobtimize.scrapindeed import IndeedScrap, scrapIndeedID, dicoFromScrap
+from jobtimize.scrapers.scrapindeed import IndeedScrap, scrapIndeedID, dicoFromScrap
 import pytest
 
 ""
 class TestIndeed:
-    searchList = ["Data Analyst nantes"]
+    searchList = ["Data Analyst"]
     countryList = ["FR"]
     
     

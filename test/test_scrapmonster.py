@@ -5,12 +5,12 @@ import sys
 sys.path.append("..")
 
 ""
-from Jobtimize.scrapmonster import MonsterScrap, scrapMonsterID, dicoFromJson
+from jobtimize.scrapers.scrapmonster import MonsterScrap, scrapMonsterID, dicoFromJson
 import pytest
 
 ""
 class TestMonster:
-    searchList = ["Data Analyst nantes"]
+    searchList = ["Data Analyst"]
     countryList = ["FR"]
     
     monsterID = scrapMonsterID(searchList, countryList)

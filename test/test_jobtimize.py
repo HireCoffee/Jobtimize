@@ -5,15 +5,15 @@ import sys
 sys.path.append("..")
 
 ""
-from Jobtimize import jobscrap
+from jobtimize.scrapers import scraper
 import pytest
 
 ""
-class TestJobtimize:
+class TestScraper:
     searchList = ["Data Analyst nantes"]
     countryList = ["FR", "QS"]
     
-    scraped = jobscrap(searchList, countryList)
+    scraped = scraper(searchList, countryList)
     
     def test_dimension(self):
         assert self.scraped.shape[1] == 9

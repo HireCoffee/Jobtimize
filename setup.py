@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 import setuptools
-import Jobtimize
+import jobtimize
 
 
 setuptools.setup(
     name = "Jobtimize",
-    packages = ["Jobtimize"],
-    version = Jobtimize.__version__,
+    packages = ["jobtimize", "jobtimize/scrapers"],
+    version = jobtimize.__version__,
     install_requires = ["beautifulsoup4", "pandas", "jsonschema", "lxml", "requests"],
     author = "Loïc Rakotoson",
     author_email = "contact@loicrakotoson.com",

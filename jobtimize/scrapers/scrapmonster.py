@@ -48,11 +48,12 @@ def idFromLink(link):
     return jobID
 
 ""
-def scrapMonsterID(searchList, countryList, prox = False):
+def scrapMonsterID(searchList, countryList, maxpage = 1, prox = False):
     """
     Extract jobIDs from the search results provided by Monster
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :maxpage: int, max number of page to scrap
     :prox: if True use proxy, default False
     :return: list of jobIDs
     """
@@ -66,7 +67,7 @@ def scrapMonsterID(searchList, countryList, prox = False):
             error = 0
             listID = set()
             page = 1
-            while True:
+            while page <= maxpage:
                 url = "https://www.monster.co.uk/medley?q={}&fq=countryabbrev_s%3A{}&pg={}".format(
                     search, country, page)
                 if page % 50 == 0 and prox: proxy = proxies.next()
@@ -160,7 +161,7 @@ def dicoFromJson(args):
     return dico
 
 ""
-def MonsterScrap(searchList, countryList, prox = False):
+def MonsterScrap(searchList, countryList, maxpage = 1, prox = False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search
@@ -169,7 +170,7 @@ def MonsterScrap(searchList, countryList, prox = False):
     :return: list of standard dictionaries
     """
     scraped = list()
-    setID = scrapMonsterID(searchList, countryList, prox)
+    setID = scrapMonsterID(searchList, countryList, maxpage, prox)
     if len(setID) < 20:
         workers = len(setID)
     else:
@@ -180,6 +181,7 @@ def MonsterScrap(searchList, countryList, prox = False):
     else:
         proxies = [None] * len(setID)
     
+    workers = 1 if workers==0 else workers
     with ThreadPoolExecutor(workers) as executor:
         for result in executor.map(dicoFromJson, zip(setID, proxies)):
             scraped.append(result)

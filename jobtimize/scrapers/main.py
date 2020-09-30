@@ -1,10 +1,9 @@
-#!/usr/bin/env python
 # coding: utf-8
 
 """
-Jobtimize main functions.
+jobtimize main functions.
 Use:
->>> from Jobtimize import jobscrap
+>>> from jobscrap import jobscrap
 """
 
 __author__ = 'Lrakotoson'
@@ -22,16 +21,17 @@ from .scrapmonster import MonsterScrap
 import pandas as pd
 import warnings
 ""
-def jobscrap(searchList, countryList, prox = False):
+def scraper(searchList, countryList, maxpage = 1, prox = False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :maxpage: int, max number of page to scrap
     :prox: if True use proxy, default False
     :return: pandas dataframe
     """
     if prox:
-        warnings.warn("Using a proxy extends execution time", UserWarning)
+        warnings.warn("Prox will be removed in 0.1.0 version", DeprecationWarning)
         
     countries = [
         'AE', 'AR', 'AT', 'AU', 'BE', 'BH', 'BR', 'CA', 'CH', 'CL', 'CN', 'CO',
@@ -42,8 +42,8 @@ def jobscrap(searchList, countryList, prox = False):
     ]
     countryList = [country for country in countryList if country in countries]
 
-    indeed = IndeedScrap(searchList, countryList, prox)
-    monster = MonsterScrap(searchList, countryList, prox)
+    indeed = IndeedScrap(searchList, countryList, maxpage, prox)
+    monster = MonsterScrap(searchList, countryList, maxpage, prox)
     # add here other sites in the same format
 
     jobData = pd.DataFrame(indeed + monster,

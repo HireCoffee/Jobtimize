@@ -19,6 +19,7 @@ from itertools import islice
 from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import re
+import warnings
 ""
 def scrapPage(url, proxy=None):
     """
@@ -67,14 +68,19 @@ def stripmatch(page):
     return repage, match
 
 ""
-def scrapIndeedID(searchList, countryList, prox=False):
+def scrapIndeedID(searchList, countryList, maxpage = 1, prox=False):
     """
     Extract jobIDs from the search results provided by Indeed
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :maxpage: int, max results page
     :prox: bool, default False
     :return: set of tuples, country and ID
     """
+    if maxpage > 101:
+        warnings.warn("maxpage args should be under 101", UserWarning)
+        maxpage = 101
+
     setID = set()
     for search in searchList:
         search = search.replace(" ", "+")
@@ -86,32 +92,33 @@ def scrapIndeedID(searchList, countryList, prox=False):
             listID = set()
             limit = 50
             start = repage = count = 0
-            match = None
-            while (repage <= 101 or len(listID) < match):
-                url = "https://{}.indeed.com/jobs?q={}&limit={}&start={}".format(
-                    country, search, limit, start)
-                if count % 50 == 0 and prox: proxy = proxies.next()
-                try:
-                    page = scrapPage(url, proxy)
-                except (Timeout, ProxyError):
-                    if prox:
-                        proxy = proxies.next()
-                        continue
-                    else:
-                        break
-                except HTTPError:
-                    break
-                else:
-                    repage, match = stripmatch(page)
-                    count += 1
-                    if (match is None or repage < count):
+            match = float('inf')
+            while repage <= maxpage:
+                if len(listID) < match:
+                    url = "https://{}.indeed.com/jobs?q={}&limit={}&start={}".format(
+                        country, search, limit, start)
+                    if count % 50 == 0 and prox: proxy = proxies.next()
+                    try:
+                        page = scrapPage(url, proxy)
+                    except (Timeout, ProxyError):
+                        if prox:
+                            proxy = proxies.next()
+                            continue
+                        else:
+                            break
+                    except HTTPError:
                         break
                     else:
-
-                        listID = listID.union({(country_general, jobID)
-                                               for jobID in list(scrapID(page))
-                                               })
-                        start += limit
+                        repage, match = stripmatch(page)
+                        count += 1
+                        if (match is None or repage < count):
+                            break
+                        else:
+                            listID = listID.union({(country_general, jobID)
+                                                for jobID in list(scrapID(page))
+                                                })
+                            start += limit
+                else: break
             setID = setID.union(listID)
     return setID
 
@@ -170,16 +177,17 @@ def dicoFromScrap(args):
     return dico
 
 ""
-def IndeedScrap(searchList, countryList, prox=False):
+def IndeedScrap(searchList, countryList, maxpage = 1, prox=False):
     """
     Extract and normalizes data from the search results
     :searchList: list of jobs or keywords to search
     :country: list of countries in 2-letter code
+    :maxpage: int, max number of page to scrap
     :prox: bool, default False
     :return: list of standard dictionaries
     """
     scraped = list()
-    setID = scrapIndeedID(searchList, countryList, prox)
+    setID = scrapIndeedID(searchList, countryList, maxpage, prox)
 
     if len(setID) < 20:
         workers = len(setID)
@@ -191,6 +199,7 @@ def IndeedScrap(searchList, countryList, prox=False):
     else:
         proxies = [None] * len(setID)
 
+    workers = 1 if workers==0 else workers
     with ThreadPoolExecutor(workers) as executor:
         try:
             for result in executor.map(dicoFromScrap, zip(setID, proxies)):
