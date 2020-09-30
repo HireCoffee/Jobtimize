@@ -9,6 +9,7 @@ The package is mainly based on scraping and text classification to fill in missi
 |[![Conda](https://img.shields.io/conda/v/lrakotoson/jobtimize?label=CONDA&logo=anaconda&style=for-the-badge)](https://anaconda.org/lrakotoson/jobtimize)|[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Jobtimize?logo=python&logoColor=yellow&style=for-the-badge)](https://pypi.org/project/Jobtimize/)|[![Codecov](https://img.shields.io/codecov/c/gh/HireCoffee/Jobtimize?logo=Codecov&style=for-the-badge)](https://codecov.io/gh/HireCoffee/Jobtimize/)|
 |![PyPI - Status](https://img.shields.io/pypi/status/Jobtimize?style=for-the-badge)|[![Downloads](https://img.shields.io/badge/dynamic/xml?label=DOWNLOADS&query=%2F%2F*[last()]%2F*[%40textLength%3D%27134.0%27%20and%20%40y%3D%27140%27]%2Ftext()&url=https%3A%2F%2Fpepy.tech%2Fbadge%2Fjobtimize&style=for-the-badge)](https://pepy.tech/project/Jobtimize)	|[![Python](https://img.shields.io/badge/Made%20with-Python-blue?style=for-the-badge&logo=python&labelColor=yellow)](https://www.python.org/)|
 
+
 ---
 ### What's new in the current version:
 - [**v.0.0.5A** Changelog](https://github.com/HireCoffee/Jobtimize/blob/master/CHANGELOG.md)
