@@ -46,7 +46,7 @@ pip install git+https://github.com/HireCoffee/Jobtimize.git
 As `Jobtimize` is a package, in python you just have to import it.
 The main function (*for now*) is `Jobtimize.jobscrap`.
 ```python
-from Jobtimize import jobscrap
+from jobtimize import scraper
 
 df = jobscrap(["Data Scientist", "Data Analyst"],
               ["UK", "FR"]
