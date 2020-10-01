@@ -38,5 +38,5 @@ class TestIndeed:
     def test_dicoscrap(self):
         assert len(self.dicoscrap) == 9
     
-    def test_scraped_len(self):
-        assert len(self.indeedID) == len(self.scraped)
+    # def test_scraped_len(self):
+    #     assert len(self.indeedID) == len(self.scraped)
