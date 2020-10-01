@@ -36,5 +36,5 @@ class TestMonster:
     def test_dicojson(self):
         assert len(self.dicojson) == 9
     
-    def test_scraped_len(self):
-        assert len(self.monsterID) == len(self.scraped)
+    # def test_scraped_len(self):
+    #     assert len(self.monsterID) == len(self.scraped)

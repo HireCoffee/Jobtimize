@@ -5,6 +5,7 @@ import sys
 sys.path.append("..")
 
 ""
+import jobtimize
 from jobtimize.scrapers import scraper
 import pytest
 
