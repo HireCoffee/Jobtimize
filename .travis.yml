@@ -6,6 +6,6 @@ install:
   - pip install pytest coverage pytest-cov codecov
   - pip install -r requirements.txt
 script: 
-  - py.test --cov-report term test/
+  - py.test --cov-report term --cov=Jobtimize test/
 after_success:
   - codecov
