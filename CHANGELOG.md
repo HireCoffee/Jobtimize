@@ -7,6 +7,20 @@ All notable changes to **Jobtimize** will be documented in this file.
 - Object-Oriented Use of Jobtimize
 ---
 
+## [0.0.5-alpha](https://github.com/Lrakotoson/Jobtimize/releases/tag/0.0.5-alpha.2) - 2020-09-30
+### Added
+- `scraper( )` function in `jobtimize.scrapers.scraper` or just `jobtimize.scraper`
+- `scraper(..., maxpage)` args which give page limit for each site. *(default `maxpage=1`, it is recommended not to exceed 2 for better relevance of the search results.)*
+
+### Changed
+- Base `Jobtimize` is now `jobtimize` module
+- `jobscrap( )` function is now `scraper( )`
+
+### Deprecated
+- `RotateProxies` class is deprecated and will be removed in `0.1.0`
+- arg `prox` in `scraper`, `scrapIndeed`, `scrapMonster` is deprecated and will be removed in `0.1.0`
+---
+
 ## [0.0.4-alpha](https://github.com/Lrakotoson/Jobtimize/releases/tag/0.0.4-alpha) - 2020-02-04
 ### Added
 - Class `RotateProxie` in the module rotateproxie
